@@ -1,84 +1,102 @@
 <!DOCTYPE html>
 <html lang="zh-cn">
 <head>
-    <title>it's rainy here - Tags</title>
+    <title>rainy.im - Tags</title>
     <meta charset="utf-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <meta name="author" content="rainy" />
     <link href="http://rainy.im/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
-          title="it's rainy here Full Atom Feed"/>
+          title="rainy.im Full Atom Feed"/>
     <link rel="shortcut icon" href="/theme/image/fav-r.png" />
-    <!-- Bootstrap core css -->
+    <link rel="stylesheet" href="/theme/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/theme/css/app.css"/>
+
+    <!-- Bootstrap core css 
     <link rel="stylesheet" href="/theme/css/bootstrap-paper.min.css">
     <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
     <link rel="stylesheet" href="/theme/css/github.css">
     <link rel="stylesheet" href="/theme/css/style.css">
     <link rel="stylesheet" href="/theme/css/lightbox.css">
+    -->
 
-    <!-- Jquery before bootstrap.js -->
+    <!-- Jquery before bootstrap.js
     <script src="/theme/js/jquery.min.js"></script>
     <script src="/theme/js/bootstrap.min.js"></script>
     <script src="/theme/js/lightbox.js"></script>
+    -->
 </head>
 
-<body id="index">
-<div class="container main-container">
-    <div class="row main-row">
-        <section id="side-bar" class="col-md-4">
-            <ul class="name-card">
-                <li>
-                    <a href="https://github.com/rainy-im" title="My Github">
-                        <img class="avatar" src="/theme/image/avatar.png"/>
-                    </a>
-                </li>
-                <li class="name-card-name"><b>rainy.im</b></li>
-                <li class="name-card-slogan"><i>therefore I am.</i></li>
-                <li class="divider"></li>
-            </ul>
-            <form class="side-search" onsubmit="return search()">
-                <input id="search-query" type="text" class="form-control" placeholder="">
-            </form>
-            <ul class="nav nav-sidebar">
-                <li><a href="/">Home</a></li>
-                <li><a href="/archives.html">Archive</a></li>
-                <li><a href="/categories.html">Category</a></li>
-                <li><a href="/tags.html">Tags</a></li>
-                <li><a href="http://rainy.im/feeds/all.atom.xml">Atom</a></li>
-            </ul>
-            <ul class="sns">
-                <li>
-                    <a href="mailto:blog@rainy.im" title="email" class="fa fa-send"></a>
-                </li>
-                <li>
-                    <a href="https://github.com/rainy-im" title="Github" alt="Github" class="fa fa-github"></a>
-                </li>
-                <li>
-                    <a href="/about" title="About me" alt="About me" class="fa fa-graduation-cap"></a>
-                </li>
-            </ul>
-        </section>
-        <!--left side-->
-        <section class="col-md-8 col-sm-12 col-xs-12">
-<ul class="post-info breadcrumb">
+<body >
+<header class="am-g my-head">
+  <div class="am-u-sm-12 am-article">
+    <h1 class="am-article-title">
+      <a href="https://github.com/rainy-im" title="My Github">
+        <img class="avatar" src="/theme/i/avatar.png"/>
+      </a>
+    </h1>
+    <p class="am-article-meta">rainy.im</p>
+  </div>
+</header>
+<hr class="am-article-divider"/>
+<div class="am-g am-g-fixed">
+  <div class="am-u-md-9 am-u-md-push-3">
+    <div class="am-g">
+      <div class="am-u-sm-11 am-u-sm-centered">
+        <div class="am-cf am-article">
+<ul class="am-breadcrumb am-breadcrumb-slash">
     <li><a href="/" title="Home">Home</a></li>
     <li class="active">
         Tags
     </li>
 </ul>
 <ul class="nav nav-pills tag-list">    <li><a href="http://rainy.im/tag/pelican.html">Pelican <span class="badge">1</span></a></li>
+    <li><a href="http://rainy.im/tag/za-xiang.html">杂项 <span class="badge">1</span></a></li>
 </ul>
-        </section>
-        <!--main content-->
+        </div>
+      </div>
+   </div>
+  </div>
+  <div class="am-u-md-3 am-u-md-pull-9 my-sidebar">
+    <div class="am-offcanvas" id="sidebar">
+      <div class="am-offcanvas-bar">
+        <ul class="am-nav">
+          <li><a href="/">首页</a></li>
+          <li><a href="/archives.html">归档</a></li>
+          <li><a href="/categories.html">归类</a></li>
+          <!--<li><a href="/tags.html">标签</a></li>-->
+          <li><a href="http://rainy.im/feeds/all.atom.xml">订阅</a></li>
+          <li class="am-nav-header"></li>
+          <li>
+              <a href="https://github.com/rainy-im" title="Github" alt="Github" class="fa fa-github">Github</a>
+          </li>
+          <li>
+              <a href="/about" title="About me" alt="About me" class="fa fa-graduation-cap">关于</a>
+          </li>
+       </ul>
+      </div>
     </div>
-    <footer id="contentinfo">
+  </div>
+  <a href="#sidebar" class="am-btn am-btn-sm am-icon-bars am-show-sm-only my-button" data-am-offcanvas><span class="am-sr-only">侧栏导航</span></a>
+</div>
+
+<footer id='contentinfo' class="my-footer">
         <p>
             Powered by <a href="http://getpelican.com/">Pelican</a>,
             Created by <a href="http://rainy.im">rainy.im</a>.
         </p>
-    </footer>
-</div>
-
-<!-- /#contentinfo -->
+</footer>
+<!--[if (gte /theIE 9)|!(IE)]><!-->
+<script src="/theme/js/jquery.min.js"></script>
+<script src="/theme/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<!-- /#contentinfo
 <script type="text/javascript" src="/theme/js/main.js"></script>
 <script type="text/javascript" src="http://tajs.qq.com/stats?sId=39210186" charset="UTF-8"></script>
+-->
 </body>
 </html>

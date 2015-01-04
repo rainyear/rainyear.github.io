@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>rainy.im</title><link href="http://rainy.im/" rel="alternate"></link><link href="http://rainy.im/feeds/all.atom.xml" rel="self"></link><id>http://rainy.im/</id><updated>2015-01-04T00:00:00+08:00</updated><entry><title>这几年杂而不精的技术学习之旅</title><link href="http://rainy.im/posts/2015/01/04/rainy-of-all-trade.html" rel="alternate"></link><updated>2015-01-04T00:00:00+08:00</updated><author><name>rainy</name></author><id>tag:rainy.im,2015-01-04:posts/2015/01/04/rainy-of-all-trade.html</id><summary type="html">&lt;h3&gt;我的杂而不精的技术学习之旅：&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>rainy.im</title><link href="http://rainy.im/" rel="alternate"></link><link href="http://rainy.im/feeds/sum.atom.xml" rel="self"></link><id>http://rainy.im/</id><updated>2015-01-04T00:00:00+08:00</updated><entry><title>这几年杂而不精的技术学习之旅</title><link href="http://rainy.im/posts/2015/01/04/rainy-of-all-trade.html" rel="alternate"></link><updated>2015-01-04T00:00:00+08:00</updated><author><name>rainy</name></author><id>tag:rainy.im,2015-01-04:posts/2015/01/04/rainy-of-all-trade.html</id><summary type="html">&lt;h3&gt;我的杂而不精的技术学习之旅：&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;C&lt;/code&gt;: 本科基础课程；&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Python&lt;/code&gt;: 图书馆的老鼠书开启的 Python 之旅；&lt;/li&gt;
@@ -38,4 +38,4 @@
 &lt;li&gt;&lt;code&gt;并行与数据结构&lt;/code&gt;: 这算是&lt;code&gt;心理仿真 2.0&lt;/code&gt;；&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Python(3/PyPy)&lt;/code&gt;: 随着时间推移，在众多新秀中，Python 俨然已经成为一名长（老）者，希望可以从 3 和 PyPy 中发现更多生机…；&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;Lisp &amp;amp; Lua&lt;/code&gt;: 我对它们很感兴趣，尴尬的是很难找到合适的应用场景，所以暂时只能当做兴趣玩玩了；&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="杂项"></category></entry><entry><title>开篇</title><link href="http://rainy.im/posts/2014/12/05/init-post.html" rel="alternate"></link><updated>2014-12-05T00:00:00+08:00</updated><author><name>rainy</name></author><id>tag:rainy.im,2014-12-05:posts/2014/12/05/init-post.html</id><summary type="html">&lt;p&gt;本博客托管在 &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; 上，由 &lt;a href="http://docs.getpelican.com/en/3.5.0/"&gt;Pelican&lt;/a&gt; 生成，主题设计参考了 &lt;a href="http://base-demo.tumblr.com/"&gt;Base&lt;/a&gt;，CSS framework 采用 &lt;a href="http://bootswatch.com/paper/"&gt;Bootstrap Paper theme&lt;/a&gt;，主要记录我关于心理学研究与计算机技术的一些思考或总结。&lt;/p&gt;</summary><category term="Pelican"></category></entry></feed>
+&lt;/ol&gt;</summary><category term="杂项"></category></entry></feed>

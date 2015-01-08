@@ -35,7 +35,7 @@
 &lt;p&gt;鉴于我们的网络状况我一般会用第二种方式，先去 GitHub 下载 Zip 压缩包，然后在本地安装（官网有提供最新的 &lt;a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3/zipball/master"&gt;Zip File&lt;/a&gt; 下载链接，如果想要其它版本则需要去 GitHub 选择下载），选择不同版本的下载方式如下：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="下载说明" src="/images/PTB-3-GitHub-Zip-Dl.png" /&gt;&lt;/p&gt;
 &lt;p&gt;解压缩之后通过 Matlab 进入到解压后的目录中的 Psychtoolbox 子目录，执行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;% @/path/to/Psychtoolbox-3-PTB_Beta-2014-11-06_V3.0.12/Psychtoolbox &lt;/span&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Psychtoolbox&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;PTB_Beta&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="n"&gt;_V3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.12&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Psychtoolbox&lt;/span&gt; 
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SetupPsychtoolbox&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
@@ -48,17 +48,20 @@
 &lt;/blockquote&gt;
 &lt;p&gt;至于具体原因或背后的原理以后再说，解决方法有提示通过&lt;code&gt;help SyncTrouble&lt;/code&gt;查看原因，（OSX系统中）一般与内核驱动有关，可以通过查看&lt;code&gt;help PsychtoolboxKernelDriver&lt;/code&gt;寻找解决方案：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="nb"&gt;cd&lt;/span&gt; /System/Library/Extensions/
+
 sudo unzip /PathToPsychtoolbox/Psychtoolbox/PsychHardware/PsychtoolboxKernelDriver64Bit.kext.zip
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;如果需要删除就的版本或升级则需要：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo kextunload /System/Library/Extensions/PsychtoolboxKernelDriver.kext
+
 sudo rm -R /System/Library/Extensions/PsychtoolboxKernelDriver.kext
 &lt;/pre&gt;&lt;/div&gt;
 
 
 &lt;p&gt;另外 OSX 10.10 需要额外的步骤：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo nvram boot-args&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;kext-dev-mode=1&amp;quot;&lt;/span&gt;
+
 reboot
 &lt;/pre&gt;&lt;/div&gt;</summary><category term="Matlab"></category><category term="PTB-3"></category><category term="Psychology"></category></entry></feed>

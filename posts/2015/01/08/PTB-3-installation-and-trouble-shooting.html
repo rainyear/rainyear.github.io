@@ -111,7 +111,7 @@
 <p>鉴于我们的网络状况我一般会用第二种方式，先去 GitHub 下载 Zip 压缩包，然后在本地安装（官网有提供最新的 <a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3/zipball/master">Zip File</a> 下载链接，如果想要其它版本则需要去 GitHub 选择下载），选择不同版本的下载方式如下：</p>
 <p><img alt="下载说明" src="/images/PTB-3-GitHub-Zip-Dl.png" /></p>
 <p>解压缩之后通过 Matlab 进入到解压后的目录中的 Psychtoolbox 子目录，执行：</p>
-<div class="highlight"><pre><span class="c">% @/path/to/Psychtoolbox-3-PTB_Beta-2014-11-06_V3.0.12/Psychtoolbox </span>
+<div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">Psychtoolbox</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">PTB_Beta</span><span class="o">-</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">06</span><span class="n">_V3</span><span class="p">.</span><span class="mf">0.12</span><span class="o">/</span><span class="n">Psychtoolbox</span> 
 <span class="o">&gt;&gt;</span> <span class="n">SetupPsychtoolbox</span>
 </pre></div>
 
@@ -124,18 +124,21 @@
 </blockquote>
 <p>至于具体原因或背后的原理以后再说，解决方法有提示通过<code>help SyncTrouble</code>查看原因，（OSX系统中）一般与内核驱动有关，可以通过查看<code>help PsychtoolboxKernelDriver</code>寻找解决方案：</p>
 <div class="highlight"><pre><span class="nb">cd</span> /System/Library/Extensions/
+
 sudo unzip /PathToPsychtoolbox/Psychtoolbox/PsychHardware/PsychtoolboxKernelDriver64Bit.kext.zip
 </pre></div>
 
 
 <p>如果需要删除就的版本或升级则需要：</p>
 <div class="highlight"><pre>sudo kextunload /System/Library/Extensions/PsychtoolboxKernelDriver.kext
+
 sudo rm -R /System/Library/Extensions/PsychtoolboxKernelDriver.kext
 </pre></div>
 
 
 <p>另外 OSX 10.10 需要额外的步骤：</p>
 <div class="highlight"><pre>sudo nvram boot-args<span class="o">=</span><span class="s2">&quot;kext-dev-mode=1&quot;</span>
+
 reboot
 </pre></div>
     </div>

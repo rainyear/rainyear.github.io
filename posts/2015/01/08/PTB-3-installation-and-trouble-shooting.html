@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta name="keywords" contents="PTB-3, Matlab, 心理学实验工具包, SYNCHRONIZATION FAILURE"/>
+
+  <meta name="description" contents="这几年杂而不精的技术学习之旅"/>
+
+  <meta name="tags" contents="Matlab"/>
+  <meta name="tags" contents="PTB-3"/>
+  <meta name="tags" contents="Psychology"/>
+  <link rel="canonical" href="http://rainy.im/posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html" />
+
+    <title>rainy.im - PTB-3 安装手册</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <meta name="author" content="rainy" />
+    <link href="http://rainy.im/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+          title="rainy.im Full Atom Feed"/>
+    <link rel="shortcut icon" href="/theme/i/fav-r.png" />
+    <link rel="stylesheet" href="/theme/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/theme/css/app.css"/>
+
+    <!-- Bootstrap core css 
+    <link rel="stylesheet" href="/theme/css/bootstrap-paper.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link rel="stylesheet" href="/theme/css/lightbox.css">
+    -->
+
+    <!-- Jquery before bootstrap.js
+    <script src="/theme/js/jquery.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+    <script src="/theme/js/lightbox.js"></script>
+    -->
+
+
+</head>
+
+<body >
+<header class="am-g my-head">
+  <div class="am-u-sm-12 am-article">
+    <h1 class="am-article-title">
+      <a href="/" title="Home">
+        <img class="avatar" src="/theme/i/avatar.png"/>
+      </a>
+    </h1>
+    <p class="am-article-meta">rainy.im</p>
+  </div>
+</header>
+<hr class="am-article-divider"/>
+<div class="am-g am-g-fixed">
+  <div class="am-u-md-9 am-u-md-push-3">
+    <div class="am-g">
+      <div class="am-u-sm-11 am-u-sm-centered">
+        <div class="am-cf am-article">
+<section id="content" class="body col-md-8">
+    <ul class="am-breadcrumb am-breadcrumb-slash">
+        <li><a href="/">Home</a></li>
+        <li>
+            <a href="/category/psychology.html" title="Psychology" alt="Psychology">
+                Psychology
+            </a>
+        </li>
+        <li class="am-active">
+          PTB-3 安装手册@2015-01-08
+        </li>
+    </ul>
+    <!-- /.post-info -->
+
+    <div class="entry-content">
+        <h3>1. 关于 <a href="http://psychtoolbox.org/">Psychtoolbox-3</a></h3>
+<p>Psychtoolbox-3(PTB-3) 是一组 Matlab（或 <a href="http://www.octave.org/">Octave</a>）的工具包，主要用来编写心理学实验程序，之前的版本是 2，PTB-3 是在原先 2 的基础上通过重写一些 Matlab 相关的 C 扩展以更好地与 OpenGL 交互，代码也开源托管在 <a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3">GitHub</a> 上，可以非常方便地下载、安装不同的开发版本，遇到问题也可以与作者直接交流（如果作者原意理你的话:P）。</p>
+<p>安装 PTB-3 首先需要安装 Matlab （如果没有版权又不想使用盗版可以尝试使用开源的替代方案 Octave），根据官网的文档说明：</p>
+<blockquote>
+<p>The current version supports Matlab 7.x and Octave 3.2.x on Mac OSX, Linux and Windows.</p>
+</blockquote>
+<p>国内用 Linux 做心理学研究的应该还比较少，大多数应该还是使用 Windows 系统，我分别尝试了在 Windows XP 系统的 Matlab 09b、Mac OSX 系统的 Octave 3.8.2 和 Matlab 14b 上安装 PTB-3 并运行了简单的 Demo，记录了一些安装过程中可能遇到的坑及解决方法。</p>
+<h3>2. 系统与软、硬件要求</h3>
+<p>PTB-3 到目前为止最新的稳定版本为 <a href="http://psychtoolbox.org/news/2014/11/05/Psychtoolbox-3.0.12-Released/">3.0.12</a>，从官网提供的 <a href="http://psychtoolbox.org/requirements/">System Requirements</a> 文档中可以查看详细的系统与软、硬件需求，总体来说基本的趋势如下：</p>
+<ol>
+<li>向后兼容32位的 Matlab 及操作系统但最新的 3.0.12 及以后的版本将不再支持32位，因此以我们实验室的机器来看最多只能用 3.0.11 :(；</li>
+<li>Matlab 与 Octave 基本上最新的版本不太会有问题，老的版本如果有问题安装出错会有提示；</li>
+<li>操作系统 Windows 主流的 XP、Win7 应该没有问题，最新升级的 Mac OSX 10.10 将布满了坑；</li>
+<li>其它硬件需求包括显卡、声卡基本上不是太老的机器都不会有问题，不过可能存在某些硬件驱动未安装的情况也会在安装过程中报错提示。</li>
+</ol>
+<h3>3. 下载安装</h3>
+<p>安装之前首先判断是否已经安装过旧的版本，在 Matlab 中输入</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="n">PsychtoolboxVersion</span>
+  <span class="nb">ans</span> <span class="p">=</span>
+
+<span class="mf">3.0</span><span class="p">.</span><span class="mi">12</span> <span class="o">-</span> <span class="n">Flavor</span><span class="p">:</span>  <span class="o">-</span> <span class="n">Corresponds</span> <span class="n">to</span> <span class="n">SVN</span> <span class="n">Revision</span> 
+<span class="n">For</span> <span class="n">more</span> <span class="n">info</span> <span class="n">visit</span><span class="p">:</span>
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="p">.</span><span class="n">com</span><span class="o">/</span><span class="n">Psychtoolbox</span><span class="o">-</span><span class="mi">3</span><span class="o">/</span><span class="n">Psychtoolbox</span><span class="o">-</span><span class="mi">3</span>
+</pre></div>
+
+
+<p>想要删除旧的版本，需要找到旧版本的安装路径：</p>
+<div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="n">PsychtoolboxRoot</span>
+</pre></div>
+
+
+<p>在 Matlab 中通过 <code>pathtool</code> 弹出搜索路径管理界面，Remove 掉所有旧版本的 PTB 相关的目录就可以了。Octave 也有类似的<a href="https://www.gnu.org/software/octave/doc/interpreter/Manipulating-the-Load-Path.html">路径管理命令</a>，我用的最新版本可能是有 Bug ，<code>rmpath</code> 命令没有达到移除的效果，可以通过编辑<code>~/.octave</code> 文件直接删除掉里面与 PTB 相关的路径。</p>
+<p>下载与安装新版本有两中方式，一种是下载官方提供的 <a href="https://raw.github.com/Psychtoolbox-3/Psychtoolbox-3/master/Psychtoolbox/DownloadPsychtoolbox.m">DownloadPsychtoolbox.m</a>，并在 Matlab 中运行，则可以自动下载安装。</p>
+<p>鉴于我们的网络状况我一般会用第二种方式，先去 GitHub 下载 Zip 压缩包，然后在本地安装（官网有提供最新的 <a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3/zipball/master">Zip File</a> 下载链接，如果想要其它版本则需要去 GitHub 选择下载），选择不同版本的下载方式如下：</p>
+<p><img alt="下载说明" src="/images/PTB-3-GitHub-Zip-Dl.png" /></p>
+<p>解压缩之后通过 Matlab 进入到解压后的目录中的 Psychtoolbox 子目录，执行：</p>
+<div class="highlight"><pre><span class="c">% @/path/to/Psychtoolbox-3-PTB_Beta-2014-11-06_V3.0.12/Psychtoolbox </span>
+<span class="o">&gt;&gt;</span> <span class="n">SetupPsychtoolbox</span>
+</pre></div>
+
+
+<p>如果没有终止或报错，可以看到最后的 <code>Enjoy!</code>，就是安装成功！</p>
+<h3>4. 可能遇到的问题与解决方法</h3>
+<p>除了版本兼容性等问题，最容易出现的错误如下：</p>
+<blockquote>
+<p>----- ! PTB - ERROR: SYNCHRONIZATION FAILURE ! ----</p>
+</blockquote>
+<p>至于具体原因或背后的原理以后再说，解决方法有提示通过<code>help SyncTrouble</code>查看原因，（OSX系统中）一般与内核驱动有关，可以通过查看<code>help PsychtoolboxKernelDriver</code>寻找解决方案：</p>
+<div class="highlight"><pre><span class="nb">cd</span> /System/Library/Extensions/
+sudo unzip /PathToPsychtoolbox/Psychtoolbox/PsychHardware/PsychtoolboxKernelDriver64Bit.kext.zip
+</pre></div>
+
+
+<p>如果需要删除就的版本或升级则需要：</p>
+<div class="highlight"><pre>sudo kextunload /System/Library/Extensions/PsychtoolboxKernelDriver.kext
+sudo rm -R /System/Library/Extensions/PsychtoolboxKernelDriver.kext
+</pre></div>
+
+
+<p>另外 OSX 10.10 需要额外的步骤：</p>
+<div class="highlight"><pre>sudo nvram boot-args<span class="o">=</span><span class="s2">&quot;kext-dev-mode=1&quot;</span>
+reboot
+</pre></div>
+    </div>
+    <div class="end-article"><b>- END -</b></div>
+    <!-- duoshuo share -->
+<div class="ds-share flat" 
+    data-title="PTB-3 安装手册" 
+    data-url="http://rainy.im/PTB-3 安装手册" >
+    <div class="ds-share-inline">
+      <ul  class="ds-share-icons-16">
+        <!--图标可以自定义-->
+        <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+        <li> <a class="ds-douban" href="javascript:void(0);" data-service="douban">豆瓣网</a> </li> 
+        <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+        <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+      </ul>
+      <div class="ds-share-icons-more"></div>
+    </div>
+ </div>
+
+    <!-- /.entry-content -->
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+    <div class="asset-footer am-alert">
+        <div class="panel-heading">
+            <h3 class="panel-title">版权声明：<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">自由转载-非商用-非衍生-保持署名</a>
+            </h3>
+        </div>
+        <div class="panel-body">
+            原文网址：<a href="http://rainy.im/posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html">http://rainy.im/posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html</a>
+        </div>
+    </div>
+    <div class="neighbors">
+        <ul class="pager">
+            <li class="prev am-pagination-prev">
+                <a href="http://rainy.im/posts/2015/01/04/rainy-of-all-trade.html" rel="prev" title="prev post">
+                  &lArr; 这几年杂而不精的技术学习之旅
+                </a>
+            </li>
+            <li class="next .am-disabled">
+                已经是最后一篇
+            </li>
+        </ul>
+        <div style="clear: both"></div>
+    </div>
+
+<!-- 多说评论框 start -->
+  <div class="ds-thread" id="ds-thread" data-thread-key="" data-title="PTB-3 安装手册" data-url="http://rainy.im/posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html" ></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"rainyim"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+      </div>
+   </div>
+  </div>
+  <div class="am-u-md-3 am-u-md-pull-9 my-sidebar">
+    <div class="am-offcanvas" id="sidebar">
+      <div class="am-offcanvas-bar">
+        <ul class="am-nav">
+          <li><a href="/">首页</a></li>
+          <li><a href="/archives.html">归档</a></li>
+          <li><a href="/categories.html">归类</a></li>
+          <!--<li><a href="/tags.html">标签</a></li>-->
+          <li><a href="http://rainy.im/feeds/all.atom.xml">订阅</a></li>
+          <li class="am-nav-header"></li>
+          <li>
+              <a href="https://github.com/rainy-im" title="Github" alt="Github" class="fa fa-github">Github</a>
+          </li>
+          <li>
+              <a href="/about" title="About me" alt="About me" class="fa fa-graduation-cap">关于</a>
+          </li>
+       </ul>
+      </div>
+    </div>
+  </div>
+  <a href="#sidebar" class="am-btn am-btn-sm am-icon-bars am-show-sm-only my-button" data-am-offcanvas><span class="am-sr-only">侧栏导航</span></a>
+</div>
+
+<footer id='contentinfo' class="my-footer">
+        <p>
+            Powered by <a href="http://getpelican.com/">Pelican</a>,
+            Created by <a href="http://rainy.im">rainy.im</a>.
+        </p>
+</footer>
+<!--[if (gte /theIE 9)|!(IE)]><!-->
+<script src="/theme/js/jquery.min.js"></script>
+<script src="/theme/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<!-- /#contentinfo
+<script type="text/javascript" src="/theme/js/main.js"></script>
+-->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=39210186" charset="UTF-8"></script>
+</body>
+</html>

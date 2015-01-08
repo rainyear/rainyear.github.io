@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>rainy.im</title><link href="http://rainy.im/" rel="alternate"></link><link href="http://rainy.im/feeds/all.atom.xml" rel="self"></link><id>http://rainy.im/</id><updated>2015-01-08T00:00:00+08:00</updated><entry><title>PTB-3 安装手册</title><link href="http://rainy.im/posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html" rel="alternate"></link><updated>2015-01-08T00:00:00+08:00</updated><author><name>rainy</name></author><id>tag:rainy.im,2015-01-08:posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html</id><summary type="html">&lt;h3&gt;1. 关于 &lt;a href="http://psychtoolbox.org/"&gt;Psychtoolbox-3&lt;/a&gt;&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>rainy.im</title><link href="http://rainy.im/" rel="alternate"></link><link href="http://rainy.im/feeds/psychology.atom.xml" rel="self"></link><id>http://rainy.im/</id><updated>2015-01-08T00:00:00+08:00</updated><entry><title>PTB-3 安装手册</title><link href="http://rainy.im/posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html" rel="alternate"></link><updated>2015-01-08T00:00:00+08:00</updated><author><name>rainy</name></author><id>tag:rainy.im,2015-01-08:posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html</id><summary type="html">&lt;h3&gt;1. 关于 &lt;a href="http://psychtoolbox.org/"&gt;Psychtoolbox-3&lt;/a&gt;&lt;/h3&gt;
 &lt;p&gt;Psychtoolbox-3(PTB-3) 是一组 Matlab（或 &lt;a href="http://www.octave.org/"&gt;Octave&lt;/a&gt;）的工具包，主要用来编写心理学实验程序，之前的版本是 2，PTB-3 是在原先 2 的基础上通过重写一些 Matlab 相关的 C 扩展以更好地与 OpenGL 交互，代码也开源托管在 &lt;a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3"&gt;GitHub&lt;/a&gt; 上，可以非常方便地下载、安装不同的开发版本，遇到问题也可以与作者直接交流（如果作者原意理你的话:P）。&lt;/p&gt;
 &lt;p&gt;安装 PTB-3 首先需要安装 Matlab （如果没有版权又不想使用盗版可以尝试使用开源的替代方案 Octave），根据官网的文档说明：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -61,43 +61,4 @@ sudo rm -R /System/Library/Extensions/PsychtoolboxKernelDriver.kext
 &lt;p&gt;另外 OSX 10.10 需要额外的步骤：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo nvram boot-args&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="s2"&gt;&amp;quot;kext-dev-mode=1&amp;quot;&lt;/span&gt;
 reboot
-&lt;/pre&gt;&lt;/div&gt;</summary><category term="Matlab"></category><category term="PTB-3"></category><category term="Psychology"></category></entry><entry><title>这几年杂而不精的技术学习之旅</title><link href="http://rainy.im/posts/2015/01/04/rainy-of-all-trade.html" rel="alternate"></link><updated>2015-01-04T00:00:00+08:00</updated><author><name>rainy</name></author><id>tag:rainy.im,2015-01-04:posts/2015/01/04/rainy-of-all-trade.html</id><summary type="html">&lt;h3&gt;我的杂而不精的技术学习之旅：&lt;/h3&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;C&lt;/code&gt;: 本科基础课程；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Python&lt;/code&gt;: 图书馆的老鼠书开启的 Python 之旅；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;PHP&lt;/code&gt;: 2天的 w3school 在线教程；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;HTML(5)/CSS(3)&lt;/code&gt;: 同是 w3school，是编码却不算语言；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;bash/zsh&lt;/code&gt;: 一夜七次的系统重装，Ubuntu；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;PHP正则匹配&lt;/code&gt;: 爬虫爬虫爬虫；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;MySQL/Sqlite&lt;/code&gt;: SQL 也是一种语言；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Vim the editor&lt;/code&gt;: 翻译变态心理学习得抛弃鼠标与方向键；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Ruby on Rails&lt;/code&gt;: 没学会走路（Ruby）去玩追火车，无疾而终的试验品；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;心理仿真&lt;/code&gt;: 哲学在上，C 语言版数据结构在下；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Js/JQuery&lt;/code&gt;: 当年还很流行“瀑布流”布局的时候，一个Jquery插件；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Node.js&lt;/code&gt;: 前端的逆袭，竟然还是为了爬虫；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Git/GitHub&lt;/code&gt;: 版控之旅的起点，记录、备份和分布式的启蒙；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Django&lt;/code&gt;: 因为庞大而失去了灵活性，同样无疾而终的试验品；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;R&lt;/code&gt;: 高级心理统计课程，为了实验与统计；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;OpenCV C/C++/Python&lt;/code&gt;: 计算机视觉眼中的图像处理，定位与模式匹配；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Processing/Processing.js&lt;/code&gt;: 可视化，想象力的艺术，而非工具；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;PHP扩展 C&lt;/code&gt;: 模板引擎的优化（失败）；OpenCV 的加入，为了面孔识别；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ASSEMBLY&lt;/code&gt;: 两次硬啃 CSAPP ；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Matlab&lt;/code&gt;: 小星星的实验程序；Psychtoolbox-3；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Octave&lt;/code&gt;: 完成 Ng 教授的机器学习课程，开源版的 Matlab；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Lisp&lt;/code&gt;: 尚未结束的 SICP 之旅；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Android/Java&lt;/code&gt;: 移动移动移动，40w；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Lua&lt;/code&gt;: 失败的移动游戏尝试，尚未结束的语言开发学习之旅；&lt;/li&gt;
-&lt;li&gt;also tried: CI/Phalcon/Flask/Angular.js/Scrapy/Bootstrap/Amaze UI/Cocos2d-x/Pelican&lt;/li&gt;
-&lt;/ul&gt;
-&lt;h3&gt;总结&lt;/h3&gt;
-&lt;p&gt;前两天又看到有人在知乎问&lt;code&gt;Golang vs Rust vs Dlang&lt;/code&gt;效能、前途的问题，类似这样的问题在程序员世界里真是层出不穷且让人乐此不疲，我回想了一下过去的几年，自己从刚刚开始接触编程到现在我认为的“杂而不精”的状态，因为个人兴趣和对新接触技术的好奇，反反复复、曲折前进地学习、尝试了这么多的“技术名词”，接触范围广的优点在于，了解更多的语言、框架、工具的特性，拓展思路，但同时缺点也很明显，浅尝辄止往往没办法真正触及最有学习价值核心特质，如同写作一般，学习了英法德日俄各种语言，可是仍旧写不出一篇精妙的文章。&lt;/p&gt;
-&lt;p&gt;过去几年的学习只顾横向扩展，而深度挖掘不够，当然这也与应用场景有关。很多新手觉得入门困难或者在入门前就徘徊在不同的语言选择上举步不前，多数情况下只是因为缺少适当的应用场景。现在我已经没办法像以前那样，听说一个很&lt;code&gt;cool&lt;/code&gt;的语言就马上追到官网去看 Start Guide，对于需要学习的新技术更多是从项目需求出发或者说由产品导向的，同时我也需要花更多的时间根据兴趣与对未来的规划进行纵向拓展。&lt;/p&gt;
-&lt;h3&gt;学习计划 2.0&lt;/h3&gt;
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;PTB-3 on Matlab/Octave&lt;/code&gt;: 编写实验程序与数据分析，顺便加深统计、数据分析与可视化；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;ML Python/Octave/R&lt;/code&gt;: 毋庸置疑，机器学习就是未来，同时为了科研，需要 &lt;code&gt;ANN&lt;/code&gt;与&lt;code&gt;Bayesian&lt;/code&gt;；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;OpenCV Python&lt;/code&gt;: 为了科研，场景识别；&lt;code&gt;Matlab&lt;/code&gt;亦可；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;并行与数据结构&lt;/code&gt;: 这算是&lt;code&gt;心理仿真 2.0&lt;/code&gt;；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Python(3/PyPy)&lt;/code&gt;: 随着时间推移，在众多新秀中，Python 俨然已经成为一名长（老）者，希望可以从 3 和 PyPy 中发现更多生机…；&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Lisp &amp;amp; Lua&lt;/code&gt;: 我对它们很感兴趣，尴尬的是很难找到合适的应用场景，所以暂时只能当做兴趣玩玩了；&lt;/li&gt;
-&lt;/ol&gt;</summary><category term="杂项"></category></entry><entry><title>开篇</title><link href="http://rainy.im/posts/2014/12/05/init-post.html" rel="alternate"></link><updated>2014-12-05T00:00:00+08:00</updated><author><name>rainy</name></author><id>tag:rainy.im,2014-12-05:posts/2014/12/05/init-post.html</id><summary type="html">&lt;p&gt;本博客托管在 &lt;a href="https://pages.github.com/"&gt;Github Pages&lt;/a&gt; 上，由 &lt;a href="http://docs.getpelican.com/en/3.5.0/"&gt;Pelican&lt;/a&gt; 生成，CSS framework 采用 &lt;a href="http://amazeui.org/"&gt;Amaze UI&lt;/a&gt;，Markdown 样式参考&lt;a href="http://prose.io/"&gt;Prose.io&lt;/a&gt;，主要记录我关于心理学研究与计算机技术的一些思考或总结。&lt;/p&gt;</summary><category term="Pelican"></category></entry></feed>
+&lt;/pre&gt;&lt;/div&gt;</summary><category term="Matlab"></category><category term="PTB-3"></category><category term="Psychology"></category></entry></feed>

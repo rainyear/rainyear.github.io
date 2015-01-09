@@ -35,12 +35,13 @@
 &lt;p&gt;鉴于我们的网络状况我一般会用第二种方式，先去 GitHub 下载 Zip 压缩包，然后在本地安装（官网有提供最新的 &lt;a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3/zipball/master"&gt;Zip File&lt;/a&gt; 下载链接，如果想要其它版本则需要去 GitHub 选择下载），选择不同版本的下载方式如下：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="下载说明" src="/images/PTB-3-GitHub-Zip-Dl.png" /&gt;&lt;/p&gt;
 &lt;p&gt;解压缩之后通过 Matlab 进入到解压后的目录中的 Psychtoolbox 子目录，执行：&lt;/p&gt;
-&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Psychtoolbox&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;PTB_Beta&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="n"&gt;_V3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.12&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Psychtoolbox&lt;/span&gt; 
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;cd&lt;/span&gt; &lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;path&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;to&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Psychtoolbox&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;PTB_Beta&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;2014&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;11&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="mi"&gt;06&lt;/span&gt;&lt;span class="n"&gt;_V3&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="mf"&gt;0.12&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="n"&gt;Psychtoolbox&lt;/span&gt;
+
 &lt;span class="o"&gt;&amp;gt;&amp;gt;&lt;/span&gt; &lt;span class="n"&gt;SetupPsychtoolbox&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;如果没有终止或报错，可以看到最后的 &lt;code&gt;Enjoy!&lt;/code&gt;，就是安装成功！&lt;/p&gt;
+&lt;p&gt;如果没有终止或报错，可以看到最后的 &lt;code&gt;Enjoy!&lt;/code&gt;，就说明安装成功！&lt;/p&gt;
 &lt;h3&gt;4. 可能遇到的问题与解决方法&lt;/h3&gt;
 &lt;p&gt;除了版本兼容性等问题，最容易出现的错误如下：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -53,7 +54,7 @@ sudo unzip /PathToPsychtoolbox/Psychtoolbox/PsychHardware/PsychtoolboxKernelDriv
 &lt;/pre&gt;&lt;/div&gt;
 
 
-&lt;p&gt;如果需要删除就的版本或升级则需要：&lt;/p&gt;
+&lt;p&gt;如果需要删除旧的版本或升级则需要：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;sudo kextunload /System/Library/Extensions/PsychtoolboxKernelDriver.kext
 
 sudo rm -R /System/Library/Extensions/PsychtoolboxKernelDriver.kext

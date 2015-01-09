@@ -111,12 +111,13 @@
 <p>鉴于我们的网络状况我一般会用第二种方式，先去 GitHub 下载 Zip 压缩包，然后在本地安装（官网有提供最新的 <a href="https://github.com/Psychtoolbox-3/Psychtoolbox-3/zipball/master">Zip File</a> 下载链接，如果想要其它版本则需要去 GitHub 选择下载），选择不同版本的下载方式如下：</p>
 <p><img alt="下载说明" src="/images/PTB-3-GitHub-Zip-Dl.png" /></p>
 <p>解压缩之后通过 Matlab 进入到解压后的目录中的 Psychtoolbox 子目录，执行：</p>
-<div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">Psychtoolbox</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">PTB_Beta</span><span class="o">-</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">06</span><span class="n">_V3</span><span class="p">.</span><span class="mf">0.12</span><span class="o">/</span><span class="n">Psychtoolbox</span> 
+<div class="highlight"><pre><span class="o">&gt;&gt;</span> <span class="n">cd</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">Psychtoolbox</span><span class="o">-</span><span class="mi">3</span><span class="o">-</span><span class="n">PTB_Beta</span><span class="o">-</span><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mi">06</span><span class="n">_V3</span><span class="p">.</span><span class="mf">0.12</span><span class="o">/</span><span class="n">Psychtoolbox</span>
+
 <span class="o">&gt;&gt;</span> <span class="n">SetupPsychtoolbox</span>
 </pre></div>
 
 
-<p>如果没有终止或报错，可以看到最后的 <code>Enjoy!</code>，就是安装成功！</p>
+<p>如果没有终止或报错，可以看到最后的 <code>Enjoy!</code>，就说明安装成功！</p>
 <h3>4. 可能遇到的问题与解决方法</h3>
 <p>除了版本兼容性等问题，最容易出现的错误如下：</p>
 <blockquote>
@@ -129,7 +130,7 @@ sudo unzip /PathToPsychtoolbox/Psychtoolbox/PsychHardware/PsychtoolboxKernelDriv
 </pre></div>
 
 
-<p>如果需要删除就的版本或升级则需要：</p>
+<p>如果需要删除旧的版本或升级则需要：</p>
 <div class="highlight"><pre>sudo kextunload /System/Library/Extensions/PsychtoolboxKernelDriver.kext
 
 sudo rm -R /System/Library/Extensions/PsychtoolboxKernelDriver.kext

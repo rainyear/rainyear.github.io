@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+
+  <meta name="keywords" contents="Natural scene, Golang, 心理学实验工具包"/>
+
+  <meta name="description" contents="以自然场景图像作为实验材料，通常需要每一试次都采用陌生图片，因此每个类别都需要几百上千张实验图片。从下载收集到筛选再到统一尺寸，这工作量当然是由计算机完成最合适。本来会用 Python+OpenCV 处理，但是最近迷上 Golang，以前觉得 Python 的代码块比 `{}` 干净又便捷，但是用过 `goimports & gofmt` 之后，就再也回不去了，享受闭上眼睛写代码的快感吧 :P"/>
+
+  <meta name="tags" contents="Golang"/>
+  <meta name="tags" contents="Psychology"/>
+  <link rel="canonical" href="http://rainy.im/posts/2015/04/23/natural-scene-image-toolkits.html" />
+
+    <title>自然场景实验材料处理工具</title>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+
+    <meta name="author" content="rainy" />
+    <link href="http://rainy.im/feeds/all.atom.xml" type="application/atom+xml" rel="alternate"
+          title="rainy.im Full Atom Feed"/>
+    <link rel="shortcut icon" href="/theme/i/fav-r.png" />
+    <link rel="stylesheet" href="/theme/css/amazeui.min.css"/>
+    <link rel="stylesheet" href="/theme/css/app.css"/>
+
+    <!-- Bootstrap core css 
+    <link rel="stylesheet" href="/theme/css/bootstrap-paper.min.css">
+    <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/theme/css/github.css">
+    <link rel="stylesheet" href="/theme/css/style.css">
+    <link rel="stylesheet" href="/theme/css/lightbox.css">
+    -->
+
+    <!-- Jquery before bootstrap.js
+    <script src="/theme/js/jquery.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+    <script src="/theme/js/lightbox.js"></script>
+    -->
+
+
+</head>
+
+<body >
+<header class="am-g my-head">
+  <div class="am-u-sm-12 am-article">
+    <h1 class="am-article-title">
+      <a href="/" title="Home">
+        <img class="avatar" src="/theme/i/avatar.png"/>
+      </a>
+    </h1>
+    <p class="am-article-meta">rainy.im</p>
+  </div>
+</header>
+<hr class="am-article-divider"/>
+<div class="am-g am-g-fixed">
+  <div class="am-u-md-9 am-u-md-push-3">
+    <div class="am-g">
+      <div class="am-u-sm-11 am-u-sm-centered">
+        <div class="am-cf am-article">
+<section id="content" class="body col-md-8">
+    <ul class="am-breadcrumb am-breadcrumb-slash">
+        <li><a href="/">Home</a></li>
+        <li>
+            <a href="/category/psychology.html" title="Psychology" alt="Psychology">
+                Psychology
+            </a>
+        </li>
+        <li class="am-active">
+          自然场景实验材料处理工具@2015-04-23
+        </li>
+    </ul>
+    <!-- /.post-info -->
+
+    <div class="entry-content">
+        <h3>0. About</h3>
+<p>以自然场景图像作为实验材料，通常需要每一试次都采用陌生图片，因此每个类别都需要几百上千张实验图片。从下载收集到筛选再到统一尺寸，这工作量当然是由计算机完成最合适。本来会用 Python+OpenCV 处理，但是最近迷上 Golang，以前觉得 Python 的代码块比 <code>{}</code> 干净又便捷，但是用过 <code>goimports &amp; gofmt</code> 之后，就再也回不去了，享受闭上眼睛写代码的快感吧 :P</p>
+<h3>1. 采集</h3>
+<p>主要有两个图片库：<a href="http://image-net.org/">ImageNet</a> &amp; <a href="http://groups.csail.mit.edu/vision/SUN/">SUN</a>，其中ImageNet是Fei-Fei大婶的<a href="http://www.ted.com/talks/fei_fei_li_how_we_re_teaching_computers_to_understand_pictures">TED演讲</a>中推荐的，膜拜Orz…</p>
+<p>SUN 整个下载下载有40G左右，ImageNet 只给想要类别的图片链接，需要自己下载，这个代码就不放了。</p>
+<h3>2. 筛选</h3>
+<p>ImageNet 大部分图片来自 flickr ，图片内容是否可用只能手动筛选，但可以排除一些下载失败、文件太小、尺寸太小的图片(<a href="https://github.com/ZJU-Psy/natural-scene-image-toolkits/blob/master/filter.go?ts=2">See filter.go</a>)。</p>
+<h3>3. 统一尺寸</h3>
+<p>呈现时必须以相同的尺寸，按照目标尺寸进行缩放时需要先通过裁减得到与目标相同宽高比的图像，否则会变形(<a href="https://github.com/ZJU-Psy/natural-scene-image-toolkits/blob/master/shoes.go?ts=2">See shoes.go</a>):</p>
+<div class="highlight"><pre><span class="kn">import</span>  <span class="s">&quot;github.com/oliamb/cutter&quot;</span>
+<span class="kd">func</span> <span class="nx">crop</span><span class="p">(</span><span class="nx">pathsrc</span><span class="p">,</span> <span class="nx">pathdest</span> <span class="kt">string</span><span class="p">)</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span> <span class="p">{</span>
+  <span class="nx">file</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Open</span><span class="p">(</span><span class="nx">pathsrc</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="c1">// decode jpeg into image.Image</span>
+  <span class="nx">img</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">jpeg</span><span class="p">.</span><span class="nx">Decode</span><span class="p">(</span><span class="nx">file</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="nx">file</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+  <span class="nx">ow</span><span class="p">,</span> <span class="nx">oh</span> <span class="o">:=</span> <span class="nx">img</span><span class="p">.</span><span class="nx">Bounds</span><span class="p">().</span><span class="nx">Max</span><span class="p">.</span><span class="nx">X</span><span class="p">,</span> <span class="nx">img</span><span class="p">.</span><span class="nx">Bounds</span><span class="p">().</span><span class="nx">Max</span><span class="p">.</span><span class="nx">Y</span>
+  <span class="k">if</span> <span class="nx">ow</span><span class="o">/</span><span class="nx">oh</span> <span class="p">&gt;</span> <span class="o">*</span><span class="nx">WIDTH</span> <span class="o">/</span> <span class="o">*</span><span class="nx">HEIGHT</span> <span class="p">{</span>
+    <span class="nx">ow</span> <span class="p">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float64</span><span class="p">(</span><span class="o">*</span><span class="nx">WIDTH</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float64</span><span class="p">(</span><span class="o">*</span><span class="nx">HEIGHT</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">oh</span><span class="p">))</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">oh</span> <span class="p">=</span> <span class="nb">int</span><span class="p">(</span><span class="nb">float64</span><span class="p">(</span><span class="o">*</span><span class="nx">HEIGHT</span><span class="p">)</span> <span class="o">/</span> <span class="nb">float64</span><span class="p">(</span><span class="o">*</span><span class="nx">WIDTH</span><span class="p">)</span> <span class="o">*</span> <span class="nb">float64</span><span class="p">(</span><span class="nx">ow</span><span class="p">))</span>
+  <span class="p">}</span>
+  <span class="nx">croped</span><span class="p">,</span> <span class="nx">_</span> <span class="o">:=</span> <span class="nx">cutter</span><span class="p">.</span><span class="nx">Crop</span><span class="p">(</span><span class="nx">img</span><span class="p">,</span> <span class="nx">cutter</span><span class="p">.</span><span class="nx">Config</span><span class="p">{</span>
+    <span class="nx">Width</span><span class="p">:</span>   <span class="nx">ow</span><span class="p">,</span>
+    <span class="nx">Height</span><span class="p">:</span>  <span class="nx">oh</span><span class="p">,</span>
+    <span class="nx">Options</span><span class="p">:</span> <span class="nx">cutter</span><span class="p">.</span><span class="nx">Copy</span><span class="p">,</span>
+  <span class="p">})</span>
+  <span class="k">if</span> <span class="nx">pathdest</span> <span class="o">!=</span> <span class="s">&quot;&quot;</span> <span class="p">{</span>
+    <span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">pathdest</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+      <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+    <span class="p">}</span>
+    <span class="k">defer</span> <span class="nx">out</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+    <span class="c1">// write new image to file</span>
+    <span class="nx">jpeg</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="nx">croped</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="nx">croped</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>然后进行缩放：</p>
+<div class="highlight"><pre><span class="kd">func</span> <span class="nx">scale</span><span class="p">(</span><span class="nx">img</span> <span class="nx">image</span><span class="p">.</span><span class="nx">Image</span><span class="p">,</span> <span class="nx">dest</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">error</span> <span class="p">{</span>
+  <span class="nx">m</span> <span class="o">:=</span> <span class="nx">resize</span><span class="p">.</span><span class="nx">Resize</span><span class="p">(</span><span class="nb">uint</span><span class="p">(</span><span class="o">*</span><span class="nx">WIDTH</span><span class="p">),</span> <span class="nb">uint</span><span class="p">(</span><span class="o">*</span><span class="nx">HEIGHT</span><span class="p">),</span> <span class="nx">img</span><span class="p">,</span> <span class="nx">resize</span><span class="p">.</span><span class="nx">Lanczos3</span><span class="p">)</span>
+  <span class="nx">out</span><span class="p">,</span> <span class="nx">err</span> <span class="o">:=</span> <span class="nx">os</span><span class="p">.</span><span class="nx">Create</span><span class="p">(</span><span class="nx">dest</span><span class="p">)</span>
+  <span class="k">if</span> <span class="nx">err</span> <span class="o">!=</span> <span class="kc">nil</span> <span class="p">{</span>
+    <span class="nx">log</span><span class="p">.</span><span class="nx">Fatal</span><span class="p">(</span><span class="nx">err</span><span class="p">)</span>
+  <span class="p">}</span>
+  <span class="k">defer</span> <span class="nx">out</span><span class="p">.</span><span class="nx">Close</span><span class="p">()</span>
+
+  <span class="c1">// write new image to file</span>
+  <span class="nx">jpeg</span><span class="p">.</span><span class="nx">Encode</span><span class="p">(</span><span class="nx">out</span><span class="p">,</span> <span class="nx">m</span><span class="p">,</span> <span class="kc">nil</span><span class="p">)</span>
+
+  <span class="k">return</span> <span class="kc">nil</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>4. 中文词库</h3>
+<p>需要（大量）指定类别的中文词汇，如动物名称。首先考虑从搜狗输入法词库中提取，参考<a href="http://blog.csdn.net/zhangzhenhu/article/details/7014271">搜狗词库转为txt格式（小小输入法）</a>，稍加改动，只保留两个字的词汇(<a href="https://github.com/ZJU-Psy/natural-scene-image-toolkits/blob/master/sougou-dict.py?ts=2">See sougou-dict.py</a>)。从<a href="http://pinyin.sogou.com/dict/">搜狗输入法词库</a>下载需词汇类别，然后：</p>
+<div class="highlight"><pre><span class="nv">$ </span>python sougou-dict.py animal.scel
+</pre></div>
+
+
+<h3>5. 待...</h3>
+    </div>
+    <div class="end-article"><b>- END -</b></div>
+    <!-- duoshuo share -->
+
+    <!-- /.entry-content -->
+    <hr data-am-widget="divider" style="" class="am-divider am-divider-default"/>
+    <div class="asset-footer am-alert">
+        <div class="panel-heading">
+            <h3 class="panel-title">版权声明：<a href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">自由转载-非商用-非衍生-保持署名</a>
+            </h3>
+        </div>
+        <div class="panel-body">
+            原文网址：<a href="http://rainy.im/posts/2015/04/23/natural-scene-image-toolkits.html">http://rainy.im/posts/2015/04/23/natural-scene-image-toolkits.html</a>
+        </div>
+    </div>
+    <div class="neighbors">
+        <ul class="pager">
+            <li class="prev am-pagination-prev">
+                <a href="http://rainy.im/posts/2015/01/08/PTB-3-installation-and-trouble-shooting.html" rel="prev" title="prev post">
+                  &lArr; PTB-3 安装手册
+                </a>
+            </li>
+            <li class="next .am-disabled">
+                已经是最后一篇
+            </li>
+        </ul>
+        <div style="clear: both"></div>
+    </div>
+
+<!-- 多说评论框 start -->
+  <div class="ds-thread" id="ds-thread" data-thread-key="" data-title="自然场景实验材料处理工具" data-url="http://rainy.im/posts/2015/04/23/natural-scene-image-toolkits.html" ></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"rainyim"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.unstable.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+        </div>
+      </div>
+   </div>
+  </div>
+  <div class="am-u-md-3 am-u-md-pull-9 my-sidebar">
+    <div class="am-offcanvas" id="sidebar">
+      <div class="am-offcanvas-bar">
+        <ul class="am-nav">
+          <li><a href="/">首页</a></li>
+          <li><a href="/archives.html">归档</a></li>
+          <li><a href="/categories.html">归类</a></li>
+          <!--<li><a href="/tags.html">标签</a></li>-->
+          <li><a href="http://rainy.im/feeds/all.atom.xml">订阅</a></li>
+          <li class="am-nav-header"></li>
+          <li>
+              <a href="https://github.com/rainyear" title="Github" alt="Github" class="fa fa-github">Github</a>
+          </li>
+          <li>
+              <a href="/about" title="About me" alt="About me" class="fa fa-graduation-cap">关于</a>
+          </li>
+       </ul>
+      </div>
+    </div>
+  </div>
+  <a href="#sidebar" class="am-btn am-btn-sm am-icon-bars am-show-sm-only my-button" data-am-offcanvas><span class="am-sr-only">侧栏导航</span></a>
+</div>
+
+<footer id='contentinfo' class="my-footer">
+        <p>
+            Powered by <a href="http://getpelican.com/">Pelican</a>,
+            Created by <a href="http://rainy.im">rainy.im</a>.
+        </p>
+</footer>
+<!--[if (gte /theIE 9)|!(IE)]><!-->
+<script src="/theme/js/jquery.min.js"></script>
+<script src="/theme/js/amazeui.min.js"></script>
+<!--<![endif]-->
+<!-- /#contentinfo
+<script type="text/javascript" src="/theme/js/main.js"></script>
+-->
+<script type="text/javascript" src="http://tajs.qq.com/stats?sId=39210186" charset="UTF-8"></script>
+</body>
+</html>

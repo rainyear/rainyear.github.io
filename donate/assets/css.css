@@ -89,7 +89,10 @@ li.gallery {
   font-weight: 900;
   font-size: 0.8em;
 }
-
+#disqus_thread {
+  width: 80%;
+  margin: 45px auto;
+}
 .clear {
   clear: both;
 }

@@ -1,11 +1,32 @@
 var updateCounter = function (ecode, n) {
   var n = n || 1;
   var ecid = "#ec"+ecode;
-  console.log(ecid);
+  // console.log(ecid);
   var c = $(ecid).html();
   $(ecid).html(parseInt(c)+n);
 }
+var DB = {
+  date: (new Date()).toLocaleDateString(),
+  counter: 0,
+  init: function () {
+    var ld = localStorage.getItem("EMOJID");
+    if (ld !== null && ld !== this.date) {
+      // Today is a new DAY.
+      localStorage.setItem("EMOJID", this.date);
+      localStorage.setItem("EMOJIC", 0);
+    } else {
+      this.counter = localStorage.getItem("EMOJIC") === null ? 0 : parseInt(localStorage.getItem("EMOJIC"));
+    };
+    return this;
+  },
+  acc: function () {
+    this.counter += 1;
+    localStorage.setItem("EMOJIC", this.counter);
+  }
+}
 $( document ).ready(function() {
+  var db = DB.init();
+
   AV.initialize("TXedaatAW9WaQMQjXLLieCED-gzGzoHsz", "eRDBYAMn3vzynFcCowyuIqQU");
   (function () {
     var query = new AV.Query('Donation');
@@ -21,6 +42,10 @@ $( document ).ready(function() {
     });
   })()
   $("img.emoji").click(function(e){
+    if (db.counter === 10) {
+      alert("See you tomorrow!");
+      return;
+    }
     var ename = $(this).attr("data-name");
     var ecode = $(this).attr("alt");
 
@@ -46,6 +71,7 @@ $( document ).ready(function() {
           dona.set('count', result.attributes.count+1);
           dona.save();
           updateCounter(ecode);
+          db.acc();
         }, function(error) {
           console.log('Error: ' + error.code + ' ' + error.message);
         });

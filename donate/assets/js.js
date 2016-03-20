@@ -10,7 +10,7 @@ var DB = {
   counter: 0,
   init: function () {
     var ld = localStorage.getItem("EMOJID");
-    if (ld !== null && ld !== this.date) {
+    if (ld !== this.date) {
       // Today is a new DAY.
       localStorage.setItem("EMOJID", this.date);
       localStorage.setItem("EMOJIC", 0);

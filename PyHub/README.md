@@ -1,4 +1,7 @@
-关注我的公众号
+关注我的公众号 PyHub
 ---
 
-![](PyHub.jpg)
+> Life is short, You need Python!
+
+![PhHub](PyHub.jpg)
+
